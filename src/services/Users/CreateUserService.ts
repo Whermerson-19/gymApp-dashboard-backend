@@ -1,3 +1,4 @@
+import { hash } from "bcrypt";
 import AppError from "../../errors/AppError";
 
 import User from "../../models/User";
@@ -26,10 +27,12 @@ export default class CreateUserService {
     if (password !== confirm_password)
       throw new AppError("Password does not match", 412);
 
+    const hashPassword = await hash(password, 10);
+
     const user = await usersRepository.create({
       username,
       email,
-      password,
+      password: hashPassword,
     });
 
     return user;
