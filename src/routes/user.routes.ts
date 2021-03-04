@@ -1,11 +1,19 @@
 import { Router } from "express";
 import { celebrate, Joi, Segments } from "celebrate";
 
+import authorization from "../middlewares/authorization";
+
+import multer from "multer";
+import uploadConfig from "../config/upload";
+
 import UsersController from "../controllers/Users/UsersController";
+import UpdateImageController from "../controllers/Users/UpdateImageController";
 
 const userRouter = Router();
 
 const usersController = new UsersController();
+const updateImageController = new UpdateImageController();
+const upload = multer(uploadConfig);
 
 userRouter.post(
   "/signup",
@@ -18,6 +26,13 @@ userRouter.post(
     }),
   }),
   usersController.create
+);
+
+userRouter.patch(
+  "/update-image",
+  authorization,
+  upload.single("image"),
+  updateImageController.update
 );
 
 export default userRouter;
