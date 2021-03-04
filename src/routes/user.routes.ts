@@ -21,7 +21,7 @@ userRouter.post(
     [Segments.BODY]: Joi.object().keys({
       username: Joi.string().required(),
       email: Joi.string().required().email(),
-      password: Joi.string().required(),
+      password: Joi.string().required().min(6),
       confirm_password: Joi.ref("password"),
     }),
   }),
