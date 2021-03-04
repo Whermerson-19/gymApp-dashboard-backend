@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { celebrate, Joi, errors, Segments } from "celebrate";
+import { celebrate, Joi, Segments } from "celebrate";
 
 import UsersController from "../controllers/Users/UsersController";
 
