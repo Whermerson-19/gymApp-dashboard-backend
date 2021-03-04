@@ -10,7 +10,7 @@ interface IMailContact {
 
 interface ISendMailData {
   to: IMailContact;
-  from: IMailContact;
+  from?: IMailContact;
   subject: string;
   templateData: IParseMailTemplate;
 }
