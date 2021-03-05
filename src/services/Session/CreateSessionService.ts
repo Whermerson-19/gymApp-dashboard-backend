@@ -1,4 +1,4 @@
-import User from "../../models/User";
+import User from "../../models/AdminUser";
 import UsersRepository from "../../repositories/Users/UsersRepository";
 
 import { sign } from "jsonwebtoken";

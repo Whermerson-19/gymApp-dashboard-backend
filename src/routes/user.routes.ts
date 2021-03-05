@@ -6,12 +6,12 @@ import authorization from "../middlewares/authorization";
 import multer from "multer";
 import uploadConfig from "../config/upload";
 
-import UsersController from "../controllers/Users/UsersController";
+import AdminUsersController from "../controllers/Users/AdminUsersController";
 import UpdateImageController from "../controllers/Users/UpdateImageController";
 
 const userRouter = Router();
 
-const usersController = new UsersController();
+const adminUsersController = new AdminUsersController();
 const updateImageController = new UpdateImageController();
 const upload = multer(uploadConfig);
 
@@ -25,7 +25,22 @@ userRouter.post(
       confirm_password: Joi.ref("password"),
     }),
   }),
-  usersController.create
+  adminUsersController.create
+);
+
+userRouter.put(
+  "/update-profile",
+  celebrate({
+    [Segments.BODY]: Joi.object().keys({
+      username: Joi.string().required().min(8).max(30),
+      email: Joi.string().email().required(),
+      current_password: Joi.string().required().min(6),
+      new_password: Joi.string().required().min(6),
+      confirm_password: Joi.ref("new_password"),
+    }),
+  }),
+  authorization,
+  adminUsersController.update
 );
 
 userRouter.patch(

@@ -1,7 +1,7 @@
 import { hash } from "bcrypt";
 import AppError from "../../errors/AppError";
 
-import User from "../../models/User";
+import User from "../../models/AdminUser";
 
 import UsersRepository from "../../repositories/Users/UsersRepository";
 

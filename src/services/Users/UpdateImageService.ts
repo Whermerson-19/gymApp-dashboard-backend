@@ -1,4 +1,4 @@
-import User from "../../models/User";
+import User from "../../models/AdminUser";
 
 import StorageProvider from "../../providers/StorageProvider";
 import UsersRepository from "../../repositories/Users/UsersRepository";

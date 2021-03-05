@@ -1,6 +1,6 @@
 import { getRepository, Repository } from "typeorm";
 
-import User from "../../models/User";
+import User from "../../models/AdminUser";
 import IUsersRepository, {
   ICreateUserData,
 } from "../../repositories/Users/IUsersRepository";
