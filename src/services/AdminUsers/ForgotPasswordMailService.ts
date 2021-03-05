@@ -1,5 +1,5 @@
 import { getRepository } from "typeorm";
-import UsersRepository from "../../repositories/Users/UsersRepository";
+import UsersRepository from "../../repositories/AdminUsers/UsersRepository";
 
 import UsersToken from "../../models/UsersToken";
 

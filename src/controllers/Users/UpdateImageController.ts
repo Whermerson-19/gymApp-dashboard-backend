@@ -1,7 +1,7 @@
 import { classToClass } from "class-transformer";
 import { Request, Response } from "express";
 
-import UpdateImageService from "../../services/Users/UpdateImageService";
+import UpdateImageService from "../../services/AdminUsers/UpdateImageService";
 
 export default class UpdateImageController {
   public async update(request: Request, response: Response): Promise<Response> {

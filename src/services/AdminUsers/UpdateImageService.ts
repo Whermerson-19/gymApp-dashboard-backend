@@ -1,7 +1,7 @@
 import User from "../../models/AdminUser";
 
 import StorageProvider from "../../providers/StorageProvider";
-import UsersRepository from "../../repositories/Users/UsersRepository";
+import UsersRepository from "../../repositories/AdminUsers/UsersRepository";
 
 import AppError from "../../errors/AppError";
 

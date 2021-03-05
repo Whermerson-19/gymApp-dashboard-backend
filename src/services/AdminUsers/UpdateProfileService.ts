@@ -1,5 +1,5 @@
 import User from "../../models/AdminUser";
-import UsersRepository from "../../repositories/Users/UsersRepository";
+import UsersRepository from "../../repositories/AdminUsers/UsersRepository";
 
 import { hash, compare } from "bcrypt";
 

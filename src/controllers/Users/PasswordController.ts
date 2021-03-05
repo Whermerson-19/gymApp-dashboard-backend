@@ -1,8 +1,8 @@
 import { classToClass } from "class-transformer";
 import { Request, Response } from "express";
 
-import ForgotPasswordMailService from "../../services/Users/ForgotPasswordMailService";
-import ResetPasswordService from "../../services/Users/ResetPasswordService";
+import ForgotPasswordMailService from "../../services/AdminUsers/ForgotPasswordMailService";
+import ResetPasswordService from "../../services/AdminUsers/ResetPasswordService";
 
 export default class ForgotPasswordController {
   public async create(request: Request, response: Response): Promise<Response> {

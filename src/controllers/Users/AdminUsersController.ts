@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 import { classToClass } from "class-transformer";
 
-import CreateUserService from "../../services/Users/CreateUserService";
-import UpdateProfileService from "../../services/Users/UpdateProfileService";
+import CreateUserService from "../../services/AdminUsers/CreateUserService";
+import UpdateProfileService from "../../services/AdminUsers/UpdateProfileService";
 
 export default class UsersController {
   public async create(request: Request, response: Response): Promise<Response> {
