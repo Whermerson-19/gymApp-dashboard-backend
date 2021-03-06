@@ -1,9 +1,6 @@
-import ClientUsers from "../../models/ClientUser";
-import Teachers from "../../models/Teachers";
+import OthersUsers from "../../models/OthersUsers";
 
-import { getRepository } from "typeorm";
-
-import TeachersRepository from "../../repositories/Teachers/TeachersRepository";
+import OthersUsersRepository from "../../repositories/OthersUsers/OthersUsersRepository";
 import AdminUsersRepository from "../../repositories/AdminUsers/UsersRepository";
 
 import { hash } from "bcrypt";
@@ -27,10 +24,9 @@ export default class CreatePersonalService {
     password,
     confirm_password,
     type,
-  }: IRequest): Promise<Teachers> {
-    const teachersRepository = new TeachersRepository();
+  }: IRequest): Promise<OthersUsers> {
+    const othersUsersRepository = new OthersUsersRepository();
     const adminUsersRepository = new AdminUsersRepository();
-    const clientUsersRepository = getRepository(ClientUsers);
 
     const verifyAdminUserId = await adminUsersRepository.findById(
       admin_user_id
@@ -38,15 +34,10 @@ export default class CreatePersonalService {
     if (!verifyAdminUserId)
       throw new AppError("You dont have required authorization", 401);
 
-    const checkPersonalEmail = await teachersRepository.findByEmail(email);
+    const checkPersonalEmail = await othersUsersRepository.findByEmail(email);
     const checkAdminUsersEmail = await adminUsersRepository.findByEmail(email);
-    const checkClientUsersEmail = await clientUsersRepository.findOne({
-      where: {
-        email,
-      },
-    });
 
-    if (checkPersonalEmail || checkAdminUsersEmail || checkClientUsersEmail)
+    if (checkPersonalEmail || checkAdminUsersEmail)
       throw new AppError("This email is already in use", 412);
 
     if (password !== confirm_password)
@@ -54,7 +45,7 @@ export default class CreatePersonalService {
 
     const hashedPassword = await hash(password, 10);
 
-    const teacher = await teachersRepository.create({
+    const teacher = await othersUsersRepository.create({
       username,
       email,
       password: hashedPassword,

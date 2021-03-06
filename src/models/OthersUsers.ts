@@ -1,3 +1,4 @@
+import { Exclude, Expose } from "class-transformer";
 import {
   Column,
   CreateDateColumn,
@@ -6,13 +7,10 @@ import {
   UpdateDateColumn,
 } from "typeorm";
 
-@Entity("teachers")
-export default class Personal {
+@Entity("others_users")
+export default class ClientUser {
   @PrimaryGeneratedColumn("uuid")
   id: string;
-
-  @Column()
-  type: string;
 
   @Column()
   username: string;
@@ -20,11 +18,20 @@ export default class Personal {
   @Column()
   email: string;
 
+  @Exclude()
   @Column()
   password: string;
 
-  @Column("decimal")
-  rating: number;
+  @Column()
+  type: string;
+
+  @Column()
+  image: string;
+
+  @Expose({ name: "url_image" })
+  getUrlImage(): string | null {
+    return this.image ? `http://localhost:3334/files/${this.image}` : null;
+  }
 
   @CreateDateColumn()
   created_at: Date;

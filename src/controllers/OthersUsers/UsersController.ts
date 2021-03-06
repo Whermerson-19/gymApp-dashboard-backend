@@ -1,16 +1,16 @@
 import { classToClass } from "class-transformer";
 import { Request, Response } from "express";
 
-import CreateTeacherService from "../../services/Teachers/CreateTeacherService";
+import CreateUserService from "../../services/OthersUsers/CreateUserService";
 
 export default class TeachersController {
   public async create(request: Request, response: Response): Promise<Response> {
-    const createTeacher = new CreateTeacherService();
+    const createUser = new CreateUserService();
 
     const admin_user_id = request.user.id;
     const { username, email, password, confirm_password, type } = request.body;
 
-    const teacher = await createTeacher.init({
+    const user = await createUser.init({
       admin_user_id,
       username,
       email,
@@ -19,6 +19,6 @@ export default class TeachersController {
       type,
     });
 
-    return response.status(201).json(classToClass(teacher));
+    return response.status(201).json(classToClass(user));
   }
 }

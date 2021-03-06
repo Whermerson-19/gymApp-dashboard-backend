@@ -1,13 +1,10 @@
-import { getRepository } from "typeorm";
-
 import AdminUser from "../../models/AdminUser";
-import ClientUser from "../../models/ClientUser";
 
 import { hash } from "bcrypt";
 import AppError from "../../errors/AppError";
 
 import AdminUsersRepository from "../../repositories/AdminUsers/UsersRepository";
-import TeachersRepository from "../../repositories/Teachers/TeachersRepository";
+import OthersUsersRepository from "../../repositories/OthersUsers/OthersUsersRepository";
 
 interface IRequest {
   username: string;
@@ -24,22 +21,12 @@ export default class CreateUserService {
     confirm_password,
   }: IRequest): Promise<AdminUser> {
     const adminUsersRepository = new AdminUsersRepository();
-    const clientUsersRepository = getRepository(ClientUser);
-    const teachersRepository = new TeachersRepository();
+    const teachersRepository = new OthersUsersRepository();
 
     const checkAdminUsersEmail = await adminUsersRepository.findByEmail(email);
     const checkTeachersEmail = await teachersRepository.findByEmail(email);
-    const checkClientUsersRepository = await clientUsersRepository.findOne({
-      where: {
-        email,
-      },
-    });
 
-    if (
-      checkAdminUsersEmail ||
-      checkTeachersEmail ||
-      checkClientUsersRepository
-    )
+    if (checkAdminUsersEmail || checkTeachersEmail)
       throw new AppError("This email is already in use", 412);
 
     if (password !== confirm_password)

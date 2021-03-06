@@ -2,14 +2,14 @@ import { Router } from "express";
 import { celebrate, Joi, Segments } from "celebrate";
 
 import authorization from "../middlewares/authorization";
-import TeachersController from "../controllers/Teachers/TeachersController";
+import UsersController from "../controllers/OthersUsers/UsersController";
 
-const teacherRouter = Router();
-const teachersController = new TeachersController();
+const othersUsersRouter = Router();
+const usersController = new UsersController();
 
-teacherRouter.use(authorization);
+othersUsersRouter.use(authorization);
 
-teacherRouter.post(
+othersUsersRouter.post(
   "/create",
   celebrate({
     [Segments.BODY]: Joi.object().keys({
@@ -21,7 +21,7 @@ teacherRouter.post(
     }),
   }),
   authorization,
-  teachersController.create
+  usersController.create
 );
 
-export default teacherRouter;
+export default othersUsersRouter;
