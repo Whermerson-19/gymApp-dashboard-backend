@@ -53,9 +53,16 @@ export default class OthersUsersRepository implements IOthersUsersRepository {
     return this.ormRepository.save(teacher);
   }
 
-  public async list(condiction_list: string): Promise<OthersUsers[]> {
+  public async list(
+    condiction_list: string,
+    page: number
+  ): Promise<OthersUsers[]> {
     if (condiction_list === "all") {
-      const list = await this.ormRepository.find();
+      const list = await this.ormRepository.find({
+        skip: page * 5 - 5,
+        take: 5,
+        cache: true,
+      });
       return list;
     }
 
@@ -63,6 +70,9 @@ export default class OthersUsersRepository implements IOthersUsersRepository {
       where: {
         type: condiction_list,
       },
+      skip: page * 5 - 5,
+      take: 5,
+      cache: true,
     });
 
     return list;

@@ -9,11 +9,12 @@ export default class TeachersController {
     const listUser = new ListUsersService();
 
     const admin_id = request.user.id;
-    const { condiction_list } = request.params;
+    const { condiction_list, page } = request.params;
 
     const list = await listUser.init({
       admin_id,
       condiction_list,
+      page: Number(page),
     });
 
     return response.status(200).json(classToClass(list));

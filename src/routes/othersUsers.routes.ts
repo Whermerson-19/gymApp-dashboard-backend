@@ -23,6 +23,9 @@ othersUsersRouter.post(
   usersController.create
 );
 
-othersUsersRouter.get("/list/:condiction_list", usersController.index);
+othersUsersRouter.get(
+  "/list/:condiction_list/page/:page",
+  usersController.index
+);
 
 export default othersUsersRouter;

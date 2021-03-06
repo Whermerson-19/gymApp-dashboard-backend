@@ -12,5 +12,5 @@ export default interface IPersonalRepository {
   findByEmail(email: string): Promise<OthersUsers | undefined>;
   create(data: ICreateOthersUsersData): Promise<OthersUsers>;
   save(teacher: OthersUsers): Promise<OthersUsers>;
-  list(condiction_list: string): Promise<OthersUsers[]>;
+  list(condiction_list: string, page: number): Promise<OthersUsers[]>;
 }
