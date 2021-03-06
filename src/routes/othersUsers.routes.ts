@@ -20,8 +20,9 @@ othersUsersRouter.post(
       type: Joi.string().required(),
     }),
   }),
-  authorization,
   usersController.create
 );
+
+othersUsersRouter.get("/list/:condiction_list", usersController.index);
 
 export default othersUsersRouter;

@@ -40,6 +40,7 @@ export default class CreateOthersUsersTable1615055169565
           {
             name: "image",
             type: "varchar",
+            isNullable: true,
           },
           {
             name: "created_at",

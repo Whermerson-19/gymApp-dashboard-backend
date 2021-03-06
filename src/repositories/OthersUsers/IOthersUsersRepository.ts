@@ -4,7 +4,7 @@ export interface ICreateOthersUsersData {
   username: string;
   email: string;
   password: string;
-  type: string;
+  type: "teacher" | "personal";
 }
 
 export default interface IPersonalRepository {
@@ -12,4 +12,5 @@ export default interface IPersonalRepository {
   findByEmail(email: string): Promise<OthersUsers | undefined>;
   create(data: ICreateOthersUsersData): Promise<OthersUsers>;
   save(teacher: OthersUsers): Promise<OthersUsers>;
+  list(condiction_list: string): Promise<OthersUsers[]>;
 }

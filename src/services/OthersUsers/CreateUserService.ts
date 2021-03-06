@@ -13,7 +13,7 @@ interface IRequest {
   email: string;
   password: string;
   confirm_password: string;
-  type: string;
+  type: "teacher" | "personal";
 }
 
 export default class CreatePersonalService {

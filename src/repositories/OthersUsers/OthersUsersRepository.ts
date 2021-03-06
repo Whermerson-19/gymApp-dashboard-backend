@@ -52,4 +52,19 @@ export default class OthersUsersRepository implements IOthersUsersRepository {
   public async save(teacher: OthersUsers): Promise<OthersUsers> {
     return this.ormRepository.save(teacher);
   }
+
+  public async list(condiction_list: string): Promise<OthersUsers[]> {
+    if (condiction_list === "all") {
+      const list = await this.ormRepository.find();
+      return list;
+    }
+
+    const list = await this.ormRepository.find({
+      where: {
+        type: condiction_list,
+      },
+    });
+
+    return list;
+  }
 }

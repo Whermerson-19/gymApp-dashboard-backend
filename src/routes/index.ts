@@ -10,6 +10,6 @@ const appRouter = Router();
 appRouter.use("/users", userRouter);
 appRouter.use("/session", sessionRouter);
 appRouter.use("/password", passwordRouter);
-appRouter.use("/teachers", othersUsersRouter);
+appRouter.use("/users", othersUsersRouter);
 
 export default appRouter;
