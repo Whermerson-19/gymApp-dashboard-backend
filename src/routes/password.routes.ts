@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { celebrate, Segments, Joi } from "celebrate";
 
-import PasswordController from "../controllers/Users/PasswordController";
+import PasswordController from "../controllers/AdminUsers/PasswordController";
 
 const passwordRouter = Router();
 

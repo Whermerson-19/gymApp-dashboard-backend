@@ -6,8 +6,8 @@ import authorization from "../middlewares/authorization";
 import multer from "multer";
 import uploadConfig from "../config/upload";
 
-import AdminUsersController from "../controllers/Users/AdminUsersController";
-import UpdateImageController from "../controllers/Users/UpdateImageController";
+import AdminUsersController from "../controllers/AdminUsers/AdminUsersController";
+import UpdateImageController from "../controllers/AdminUsers/UpdateImageController";
 
 const userRouter = Router();
 
