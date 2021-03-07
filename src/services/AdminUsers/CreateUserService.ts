@@ -3,7 +3,7 @@ import AdminUser from "../../models/AdminUser";
 import { hash } from "bcrypt";
 import AppError from "../../errors/AppError";
 
-import AdminUsersRepository from "../../repositories/AdminUsers/UsersRepository";
+import AdminUsersRepository from "../../repositories/AdminUsers/AdminUsersRepository";
 import OthersUsersRepository from "../../repositories/OthersUsers/OthersUsersRepository";
 
 interface IRequest {

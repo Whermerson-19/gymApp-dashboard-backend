@@ -3,6 +3,7 @@ import { Request, Response } from "express";
 
 import CreateUserService from "../../services/OthersUsers/CreateUserService";
 import ListUsersService from "../../services/OthersUsers/ListUsersService";
+import DeleteUserService from "../../services/OthersUsers/DeleteUserService";
 
 export default class TeachersController {
   public async index(request: Request, response: Response): Promise<Response> {
@@ -36,5 +37,20 @@ export default class TeachersController {
     });
 
     return response.status(201).json(classToClass(user));
+  }
+
+  public async delete(request: Request, response: Response): Promise<Response> {
+    const deleteUser = new DeleteUserService();
+
+    const admin_id = request.user.id;
+    const { user_id, reason } = request.params;
+
+    await deleteUser.init({
+      admin_id,
+      user_id,
+      reason,
+    });
+
+    return response.status(200).json({ sucess: "deleted user with success" });
   }
 }

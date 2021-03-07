@@ -1,5 +1,5 @@
 import User from "../../models/AdminUser";
-import UsersRepository from "../../repositories/AdminUsers/UsersRepository";
+import UsersRepository from "../../repositories/AdminUsers/AdminUsersRepository";
 
 import { sign } from "jsonwebtoken";
 import { compare } from "bcrypt";

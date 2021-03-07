@@ -40,7 +40,7 @@ export default class MailProvider {
     const message = await transporter.sendMail({
       from: {
         name: from?.name || "@GymAcademy",
-        address: from?.address || "contado@gymacademy.com.br",
+        address: from?.address || "contato@gymacademy.com.br",
       },
       to: {
         name: to.name,

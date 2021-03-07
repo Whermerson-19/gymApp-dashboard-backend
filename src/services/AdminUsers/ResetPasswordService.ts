@@ -2,7 +2,7 @@ import UsersToken from "../../models/UsersToken";
 import User from "../../models/AdminUser";
 
 import { getRepository } from "typeorm";
-import UsersRepository from "../../repositories/AdminUsers/UsersRepository";
+import UsersRepository from "../../repositories/AdminUsers/AdminUsersRepository";
 
 import { hash } from "bcrypt";
 

@@ -1,7 +1,7 @@
 import OthersUsers from "../../models/OthersUsers";
 
 import OthersUsersRepository from "../../repositories/OthersUsers/OthersUsersRepository";
-import AdminUsersRepository from "../../repositories/AdminUsers/UsersRepository";
+import AdminUsersRepository from "../../repositories/AdminUsers/AdminUsersRepository";
 import AppError from "../../errors/AppError";
 
 interface IRequest {

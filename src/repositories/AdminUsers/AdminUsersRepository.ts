@@ -1,9 +1,7 @@
 import { getRepository, Repository } from "typeorm";
 
 import User from "../../models/AdminUser";
-import IUsersRepository, {
-  ICreateUserData,
-} from "../../repositories/AdminUsers/IUsersRepository";
+import IUsersRepository, { ICreateUserData } from "./IUsersRepository";
 
 export default class UsersRepository implements IUsersRepository {
   private ormRepository: Repository<User>;

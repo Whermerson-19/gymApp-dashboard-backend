@@ -13,4 +13,5 @@ export default interface IPersonalRepository {
   create(data: ICreateOthersUsersData): Promise<OthersUsers>;
   save(teacher: OthersUsers): Promise<OthersUsers>;
   list(condiction_list: string, page: number): Promise<OthersUsers[]>;
+  delete(user_id: string): Promise<void>;
 }

@@ -77,4 +77,8 @@ export default class OthersUsersRepository implements IOthersUsersRepository {
 
     return list;
   }
+
+  public async delete(user_id: string): Promise<void> {
+    await this.ormRepository.delete(user_id);
+  }
 }

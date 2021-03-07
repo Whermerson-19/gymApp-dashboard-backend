@@ -28,4 +28,9 @@ othersUsersRouter.get(
   usersController.index
 );
 
+othersUsersRouter.delete(
+  "/delete/:user_id/reason/:reason",
+  usersController.delete
+);
+
 export default othersUsersRouter;
